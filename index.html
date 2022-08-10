@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Quiz</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body>
+    <div class= "container">
+        <div id="homepage" class="flexbox flex-column">
+            <h1>Welcome to Jay White's Code Quiz</h1>
+            <!-- button to start quiz -->
+            <a class="btn" href="/quiz.html">Start Quiz</a>
+            <!-- button to see high score-->
+            <a class="btn" href="/highscore.html">High Score</a>
+        </div>
+    </div>
+  <!-- timer -->
+
+  
+  <!-- questions -->
+  <div id="question-title">title here</div>
+  <!-- final score -->
+  <!-- enter initials  -->
+
+  <!-- database -->
+
+</body>
+<script>
+  const questionTitle = document.getElementById('question-title');
+  const answers = Array.from(document.getElementsByClassName('choice-text'));
+
+  let displayedQuestion = {};
+  let acceptingAnswers = false;
+  let score = 0;
+  let questionCounter = 0;
+  let availableQuestions = [];
+
+  let questions = [
+    {
+      question: 'what color is the sky',
+      selections: ['red', 'green', 'blue', 'purple'],
+      answer: 'blue',
+    },
+    {
+      title: 'what color is the sun',
+      selections: ['yellow', 'green', 'blue', 'purple'],
+      answer: 'yellow',
+    }
+  ]
+
+  //Constants
+  const wrongAnswer = -10;
+  const maxQuestions = 2
+  //startGame
+  //startGame = () =>{
+    //questionCounter = 0;
+   // score = 0;
+    //availableQuestion = [...questions];
+    //getNewQuestion();
+ // };
+
+  //getNewQuestion = () => {
+    //if(availableQuestions.length === 0 || questionCounter >= maxQuestions){
+        //go to end page
+        //return window.location.assign('/end.html');
+    //}
+    //questionCounter++;
+    //const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    //currentQuestion = availableQuestions[questionIndex];
+    //question.innerText = currentQuestion.question;
+
+    //answers.forEach((answers) => {
+    //    const number = choice.dataset['number'];
+    //    chioce.innerText = currentQuestion['chioce' + number];
+    //});
+
+  //}
+
+
+  // functions
+  let startgame = function(){
+    console.log("Start game function activate");
+    //show display of questions from array
+    
+    //click the answer user chooses
+    //Optional...show if right or wrong answer chosen
+    //display new question
+    //give points
+    //subtract from timer
+
+    //set score to 0
+    //start timer
+  };
+  // startGame
+  // start timer
+  // show first question
+
+  // questionclick
+  // see if answer is wrong or right
+  // if wrong -- deduct from timer go to next question
+  // if right -- move to next quesiton
+  // if last question show score and ask to save
+
+  // events
+  // click a button
+  // button.onclick = startGame
+
+  // choose answer
+  // questionclick
+  
+  // save score
+  // prompt for initals 
+  // save intials and score to localstorage
+  //Clicking button runs startgame
+  let startQuiz = document.querySelector("#start-quiz")
+  startQuiz.addEventListener("click", startgame);
+
+
+  //console.log(questionTitle);
+  
+</script>
+
