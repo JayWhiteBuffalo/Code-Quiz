@@ -1,9 +1,11 @@
 
   const startBtn = document.getElementById('start');
   const questionTitle = document.getElementById('question-title');
-  const timerEl = document.getElementsByClassName('timer');
+  const timerEl = document.getElementById('timer');
   const optionsEl = document.getElementById('options');
   const questionsEl = document.getElementById('questions');
+  const finalScoreEl = document.getElementById('final-score');
+  
   //Questions Array
   let questions = [
     {
@@ -28,7 +30,7 @@
   let time = questions.length * 20;
   //This starts the timer countdown
   let timerTick;
-  
+  let finalScore = time;
 
   // functions
   function startGame() {
@@ -37,9 +39,11 @@
     homepage.setAttribute('class', 'hide');
     //Show questions
     questionsEl.removeAttribute("class", "hide");
-    //Display timer
-    //timerEl.removeAttribute('class', 'hide');
-    //timerEl.textContent = time;
+    //Initial Clock display appearence
+    let timerclkNode = document.createElement("h2");
+    timerclkNode.setAttribute("class","timerclk");
+    timerclkNode.textContent =  "Time Left:" + time;
+    timerEl.appendChild(timerclkNode);
     //start timer
     timerTick = setInterval(clockTick, 1000);
     //Display questions
@@ -80,6 +84,7 @@
     if (!buttonEl.matches('.options')){
         return;}
     if(buttonEl.value !== questions[currentQuestionIndex].answer){
+
         //Lose time for wrong answer
         time -= 10;
         //Stop timer from going negitive
@@ -106,9 +111,17 @@
             clearInterval(timerTick);
             //clear Questions
             questionsEl.textContent="";
+            //clears timer display
+            timerEl.textContent = "";
             //show High Score page
             const highScoreEl = document.getElementById("highscore-screen");
+            const finalScoreEl = document.getElementById("final-score")
             highScoreEl.removeAttribute("class", "hide");
+            //show score
+            let finalScoreElNode = document.createElement("h2");
+            
+            finalScoreElNode.textContent = time;
+            finalScoreEl.appendChild(finalScoreElNode);
         }
     
     
@@ -118,12 +131,21 @@
     function clockTick(){
         //update time
         time--;
-        timerEl.textContent=  time;
+        clockdisplay();
 
         //When clock hits 0 run HighScore
         if(time <= 0) {
-            console.log('Times UP!')
+            time = 0;
+            endQuiz();
         }
+    function clockdisplay(){
+        let timerclkNode = document.createElement("h2");
+        //removes last appended time display
+        timerEl.textContent="";
+        timerclkNode.setAttribute("class","timerclk");
+        timerclkNode.textContent =  "Time Left:" + time;
+        timerEl.appendChild(timerclkNode);
+    }
 
   };
 
