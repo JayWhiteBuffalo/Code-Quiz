@@ -13,8 +13,8 @@
     },
     {
       title: 'what color is the sun',
-      options: ['yellow', 'green', 'blue', 'purple'],
-      answer: 'yellow',
+      options: ['yellow', 'gray', 'silver', 'gold'],
+      answer: 'gold',
     }
   ]
   //variable to track which obj in array is referenced
@@ -49,6 +49,8 @@
     //Update text with current question
     const titleEl = document.getElementById('question-title');
     titleEl.textContent = currentQuestion.title;
+    //takes away old set of options
+    optionsEl.textContent = "";
   
     //loop for options
     for (let i = 0; i < currentQuestion.options.length; i++){
@@ -63,7 +65,42 @@
         optionsEl.appendChild(optionsNode);
     
     }
-  };
+  }
+
+  //User click an option
+  function chooseAnswer(event){
+    let buttonEl = event.target;
+    
+    //Nothing will happen if user clicks anything that is not a option
+    if (!buttonEl.matches('.options')){
+        return;}
+    if(buttonEl.value !== questions[currentQuestionIndex].answer){
+        //Lose time for wrong answer
+        time -= 10;
+        //Stop timer from going negitive
+        if (time <0){
+            time = 0;
+        }
+    }
+        //Update timer
+        timerEl.textContent = time;
+        //Adds one to currentQuestionIndex so it can select a new set of questions in array
+        currentQuestionIndex++;
+        // Check to see if we have reach end of question array or time has run out
+        if (time <= 0 || currentQuestionIndex === questions.length){
+
+        }
+        //If more questions and timer is not zero, get next question
+         else {
+            getQuestion();
+        }
+        }
+    
+
+    
+    
+  
+
 
     function clockTick(){
         //update time
@@ -78,5 +115,7 @@
   };
 
   
-
+  //enables user to start quiz by clicking start btn
   startBtn.onclick = startGame;
+  //enables user to choose answer and run func by clicking option
+  optionsEl.onclick = chooseAnswer;
