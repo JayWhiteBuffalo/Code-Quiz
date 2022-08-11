@@ -2,15 +2,12 @@
   const startBtn = document.getElementById('start');
   const questionTitle = document.getElementById('question-title');
   const timerEl = document.getElementsByClassName('timer');
-
-  let displayedQuestion = {};
-  let acceptingAnswers = false;
-  let score = 0;
-  let questionCounter = 0;
-  let availableQuestions = [];
+  const optionsEl = document.getElementById('options');
+  const questionsEl = document.getElementById('questions');
+  //Questions Array
   let questions = [
     {
-      question: 'what color is the sky',
+      title: 'what color is the sky',
       options: ['red', 'green', 'blue', 'purple'],
       answer: 'blue',
     },
@@ -20,51 +17,53 @@
       answer: 'yellow',
     }
   ]
-
-  //
+  //variable to track which obj in array is referenced
+  let currentQuestionIndex = 0;
+  // Quiz Timer length determined by number of questions
   let time = questions.length * 20;
+  //This starts the timer countdown
   let timerTick;
-  const wrongAnswer = -10;
   
-  //startGame
-  //startGame = () =>{
-    //questionCounter = 0;
-   // score = 0;
-    //availableQuestion = [...questions];
-    //getNewQuestion();
- // };
-
-  //getNewQuestion = () => {
-    //if(availableQuestions.length === 0 || questionCounter >= maxQuestions){
-        //go to end page
-        //return window.location.assign('/end.html');
-    //}
-    //questionCounter++;
-    //const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-    //currentQuestion = availableQuestions[questionIndex];
-    //question.innerText = currentQuestion.question;
-
-    //answers.forEach((answers) => {
-    //    const number = choice.dataset['number'];
-    //    chioce.innerText = currentQuestion['chioce' + number];
-    //});
-
-  //}
-
 
   // functions
   function startGame() {
     //hide homepage screen
     let homepage = document.getElementById('homepage');
     homepage.setAttribute('class', 'hide');
+    //Show questions
+    questionsEl.removeAttribute("class", "hide");
     //Display timer
-    timerEl.removeAttribute('class', 'hide');
-    timerEl.textContent = time;
+    //timerEl.removeAttribute('class', 'hide');
+    //timerEl.textContent = time;
     //start timer
     timerTick = setInterval(clockTick, 1000);
     //Display questions
+    getQuestion();
 
   }
+
+  function getQuestion(){
+    //get current question object from array
+    let currentQuestion = questions[currentQuestionIndex];
+
+    //Update text with current question
+    const titleEl = document.getElementById('question-title');
+    titleEl.textContent = currentQuestion.title;
+  
+    //loop for options
+    for (let i = 0; i < currentQuestion.options.length; i++){
+        //create button for each option
+        let options = currentQuestion.options[i];
+        let optionsNode = document.createElement('button');
+        optionsNode.setAttribute("class", "options");
+        optionsNode.setAttribute("value", options);
+
+        optionsNode.textContent = options;
+        //display on page
+        optionsEl.appendChild(optionsNode);
+    
+    }
+  };
 
     function clockTick(){
         //update time
@@ -77,12 +76,7 @@
         }
 
   };
- 
+
   
 
   startBtn.onclick = startGame;
- 
-
-
-  //console.log(questionTitle);
-  
