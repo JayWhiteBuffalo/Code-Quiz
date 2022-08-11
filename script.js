@@ -5,6 +5,7 @@
   const optionsEl = document.getElementById('options');
   const questionsEl = document.getElementById('questions');
   const finalScoreEl = document.getElementById('final-score');
+  const scoreBtn = document.getElementById('submit')
   
   //Questions Array
   let questions = [
@@ -119,12 +120,13 @@
             highScoreEl.removeAttribute("class", "hide");
             //show score
             let finalScoreElNode = document.createElement("h2");
-            
             finalScoreElNode.textContent = time;
             finalScoreEl.appendChild(finalScoreElNode);
         }
     
-    
+    //when button is clicked, log user input to localstorage
+    //clear text entry box
+
   
 
 
@@ -142,15 +144,26 @@
         let timerclkNode = document.createElement("h2");
         //removes last appended time display
         timerEl.textContent="";
+        //Creates updated time display
         timerclkNode.setAttribute("class","timerclk");
         timerclkNode.textContent =  "Time Left:" + time;
         timerEl.appendChild(timerclkNode);
-    }
+        }
+    };
+    function storeScore(){
+        let userScoreInput = document.querySelector("input[name='initials']").value;
+        localStorage.setItem("Points-Earned", time);
+        localStorage.setItem("Player", userScoreInput );
+        
+        
+        };
 
-  };
+
 
   
   //enables user to start quiz by clicking start btn
   startBtn.onclick = startGame;
   //enables user to choose answer and run func by clicking option
   optionsEl.onclick = chooseAnswer;
+  //enables user to log score and initials
+  scoreBtn.onclick = storeScore;
