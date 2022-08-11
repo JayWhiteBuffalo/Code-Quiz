@@ -15,7 +15,12 @@
       title: 'what color is the sun',
       options: ['yellow', 'gray', 'silver', 'gold'],
       answer: 'gold',
-    }
+    },
+    {
+        title: 'what color is the sky',
+        options: ['red', 'green', 'blue', 'purple'],
+        answer: 'blue',
+      }
   ]
   //variable to track which obj in array is referenced
   let currentQuestionIndex = 0;
@@ -67,7 +72,7 @@
     }
   }
 
-  //User click an option
+  //User chooses Answer and clicks button
   function chooseAnswer(event){
     let buttonEl = event.target;
     
@@ -88,7 +93,7 @@
         currentQuestionIndex++;
         // Check to see if we have reach end of question array or time has run out
         if (time <= 0 || currentQuestionIndex === questions.length){
-
+            endQuiz();
         }
         //If more questions and timer is not zero, get next question
          else {
@@ -96,7 +101,15 @@
         }
         }
     
-
+        function endQuiz() {
+            //stop timer
+            clearInterval(timerTick);
+            //clear Questions
+            questionsEl.textContent="";
+            //show High Score page
+            const highScoreEl = document.getElementById("highscore-screen");
+            highScoreEl.removeAttribute("class", "hide");
+        }
     
     
   
