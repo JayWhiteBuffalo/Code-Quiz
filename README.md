@@ -1,6 +1,17 @@
 # Code-Quiz
 A timed coding quiz with multiple-choice questions. Using dynamically updated HTML, CSS and JavaScript 
 
+![Code-Quiz](./quiz%3Dscreen-shot.jpeg)
+
+## **Live Deployment Link**
+
+https://jaywhitebuffalo.github.io/Code-Quiz/
+
+
+## **Devlopment Team**
+[Tyler Mason - JayWhiteBuffalo](https://github.com/JayWhiteBuffalo/Code-Quiz.git)
+
+## Criteria
 - GIVEN I am taking a code quiz
 - WHEN I click the start button
     - THEN a timer starts and I am presented with a question
