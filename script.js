@@ -10,19 +10,19 @@
   //Questions Array
   let questions = [
     {
-      title: 'what color is the sky',
-      options: ['red', 'green', 'blue', 'purple'],
-      answer: 'blue',
+      title: 'What character is used to make an array in JS?',
+      options: ['[]', '()', '||', '<>'],
+      answer: '[]',
     },
     {
-      title: 'what color is the sun',
-      options: ['yellow', 'gray', 'silver', 'gold'],
-      answer: 'gold',
+      title: 'How do you insert COMMENTS in Java code?',
+      options: ['/*This is a comment', '#This is a comment', '**This is a comment', '//This is a comment'],
+      answer: '//This is a comment',
     },
     {
-        title: 'what color is the sky',
-        options: ['red', 'green', 'blue', 'purple'],
-        answer: 'blue',
+        title: 'Which keyword is used to return a value inside a method?',
+        options: ['get', 'return', 'break', 'void'],
+        answer: 'return',
       }
   ]
   //variable to track which obj in array is referenced
@@ -120,7 +120,7 @@
             highScoreEl.removeAttribute("class", "hide");
             //show score
             let finalScoreElNode = document.createElement("h2");
-            finalScoreElNode.textContent = time;
+            finalScoreElNode.textContent = "Score:" + time;
             finalScoreEl.appendChild(finalScoreElNode);
         }
     
@@ -154,7 +154,16 @@
         let userScoreInput = document.querySelector("input[name='initials']").value;
         localStorage.setItem("Points-Earned", time);
         localStorage.setItem("Player", userScoreInput );
+
+        let scores = document.getElementById('scores');
+        let scoreNode = document.createElement('h2');
+        scoreNode.setAttribute("class", "scoreboard");
         
+
+        scoreNode.textContent = userScoreInput + "........................." + time;
+        //display on page
+        scores.appendChild(scoreNode);
+
         
         };
 

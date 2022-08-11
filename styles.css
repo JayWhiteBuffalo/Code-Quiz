@@ -73,8 +73,15 @@ h1{
 .highscore{
     display: flex;
     flex: 1;
-    padding: 50px;
-    margin: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    flex-direction: column;
+}
+.highscore-h1{
+    margin: auto, 0;
 }
 .timerclk{
     text-align: center;
